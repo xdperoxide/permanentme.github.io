@@ -1,0 +1,55 @@
+#container,
+#inner{
+	margin-top: 3%;
+}
+.jumbotron{
+	background: url(../images/hkstreet.jpeg) no-repeat;
+	background-size: cover;
+	padding-top: 10%;
+}
+
+.grid{
+	display: block;
+	width: 250px;
+	margin-bottom:5%;
+	margin-left:10%;
+	height: 250px;
+	float: left;
+	position: relative;
+
+}
+.grid,
+.grid:hover{
+	color: #333333;
+}
+.completed {
+	background-color: LightCoral;
+}
+.notyet {
+	background-color: MistyRose;
+}
+.detail{
+	clear:left;
+	margin-top:300px;
+}
+.desc{
+	position: absolute;
+    width: 80%;
+    bottom: 0;
+    padding: 0 10%;
+    max-height:0;
+    overflow: hidden;
+    transition-property: all;
+	transition-duration: 1s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+.grid:hover .desc{
+	max-height:200px;
+}
+.sketch{
+	opacity: 0;
+	height: 0;
+	width:100%;
+	padding:0!important;
+	background-color: #333333!important;
+}

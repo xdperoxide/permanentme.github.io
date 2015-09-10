@@ -1,0 +1,79 @@
+/*----- Accordion -----*/
+.accordion, .accordion * {
+    -webkit-box-sizing:border-box; 
+    -moz-box-sizing:border-box; 
+    box-sizing:border-box;
+}
+ 
+.accordion{
+    overflow:hidden;
+	position:relative;
+	float:left;
+	width:100%;
+	height:auto;
+}
+ 
+/*----- Section Titles -----*/
+.accordion-section-title,
+.payment{
+    width:100%;
+    padding:10px 10% 10px 2%;
+	margin-top:15px;
+    display:inline-block;
+	border-bottom:2px solid #006C9C;
+    background:#FFFFFF;
+    transition:all linear 0.15s;
+    /* Type */
+    color:#002943;
+	font-size:18px;
+	position:relative;
+	float:left;
+}
+.accordion-section-title:first-child{
+	margin-top:0px !important;
+}
+
+.accordion-section-title:after,
+.payment:after{
+	content:'';
+	background-image:url(../images/btn-accordion.png);
+	background-size:cover;
+	height:32px;
+	width:32px;
+	position:absolute;
+	right:2%;
+	display:block;
+	top:5px;
+}
+
+.accordion-section-title.active:after,
+.payment.active:after{
+	background-image:url(../images/btn-accordion2.png);
+}
+ 
+.accordion-section-title.active, .accordion-section-title:hover,
+.payment.active, .payment:hover{
+    background:#D7F4FE;
+    /* Type */
+    text-decoration:none;
+}
+ 
+.accordion-section:last-child .accordion-section-title {
+}
+ 
+/*----- Section Content -----*/
+.accordion-section-content {
+	position:relative;
+	float:left;
+    display:none;
+	width:100%;
+	height:auto;
+}
+
+.accordion-section-content > div {
+	padding:15px 10px;
+	background-color:#FFF;
+	height:auto;
+	position:relative;
+	float:left;
+}
