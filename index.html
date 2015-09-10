@@ -1,42 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive-min.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-min.css" media="print">
-    <script src="js/bootstrap.min..js"></script>
-
+    <link rel="stylesheet" type="text/css" href="css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/accordion.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    $(function() {
+        $(".showsketch").click(function() {
+            var href = $(this).attr('href'),
+                oset = $(href).offset().top;
+            $(href).animate({
+                opacity: 1,
+                height: "300px",
+                scrollTop: oset
+            }, 1000, function() {
+                $(href).addClass("open");
+                $(".sketch.open").click(function() {
+                    var dest = $(this).parents('.accordion-section-content').prev(),
+                        oset = dest.offset().top;
+                    $(this).animate({
+                        opacity: 0,
+                        height: 0,
+                        scrollTop: oset
+                    }, 1000, function() {
+
+                        //after the animation is complete, update the hash in the address bar so that the state is saved (if the user refreshed the page they can be brought back to this place, but that takes a bit more code)
+                        location.hash = dest.attr("href");
+                        $(this).removeClass("open");
+                    });
+                });
+            });
+        });
+
+    });
+    </script>
     <title>HCI Assignment Page</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="container" class="container-fluid">
-      <div class="inner row-fluid">
-    
-        <header>
-          <h1>Assignment</h1>
-          <h2></h2>
+        <header class="jumbotron">
+            <div class="container">
+                <h1>HCI Assignment Page</h1>
+                <p>By [Author] email:author@test.com</p>
+            </div>
         </header>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>
-<a id="welcome-to-my-page" class="anchor" href="#welcome-to-my-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to my page!</h1>
-        </section>
-
+        <div id="inner" class="row-fluid">
+            <a href="#hw0" class="grid completed">
+                <div class="desc">
+                    <h2>Homework#0</h2>
+                    <p>Project Ideas</p>
+                </div>
+            </a>
+            <a href="#" class="grid notyet">2</a>
+            <a href="#" class="grid notyet">3</a>
+            <a href="#" class="grid notyet">4</a>
+            <a href="#" class="grid notyet">5</a>
+            <a href="#" class="grid notyet">6</a>
+        </div>
+        <!-- Task 2: Project ideas.
+            Pick three different project ideas that you would be interested in working on for the prototyping assignment. Make a rough sketch of a user interface and write a couple of paragraphs for each. Your paragraph should tell us:
+                - What the system will be used for (why this is needed, the functionality of the system, the motivation behind this system.)
+                - Any additional information needed to describe the interface (beyond the interface sketch.)
+        -->
+        <div class="accordion" id="hw0">
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="#pper1">Project Idea #1 - Peer review exercises in students portal</a>
+                <div id="pper1" class="accordion-section-content">
+                    <strong>Purpose: </strong>
+                    <p>Enhance students' understanding on the content of this course after lectures. Students can discuss about the course with each other.</p>
+                    <strong>Functionality: </strong>
+                    <ol>
+                        <li>Multiple chocies questions on each topic</li>
+                        <li>Illustrate score of each topic in graphs so that student can know which topic they need to study harder</li>
+                        <li>Some questions refers to reference that need to study after lecture</li>
+                        <li>Discussion board for students discussion</li>
+                    </ol>
+                    <strong>Motivation behind this system</strong>
+                    <p>Motivate self-learning after normal lecture</p>
+                    <li><a class="showsketch" href="#sketch1">Interface sketch</a></li>
+                    </ul>
+                    <div class="sketch" id="sketch1">
+                        [This is a sketch]
+                    </div>
+                </div>
+                <a class="accordion-section-title" href="#pper2">Project Idea #2 - Recipe database</a>
+                <div id="pper2" class="accordion-section-content">
+                    <strong>Purpose: </strong>
+                    <p>Gather recipes around the world. Apart from step by step instruction, user may upload videos/photos and share their own variation for futher reference. Introduce common cooking methods or ingridents for newbie to learn basic cooking techniques.</p>
+                        <strong>Purpose: </strong>
+                        <p>Gather good cooking ideas. Allow user to share their own variation of common dish. Modify existing recipts according to personal preference</p>
+                        <strong>Functionality: </strong>
+                        <ol>
+                            <li>Search recipes by cooking methods/ingridents/difficulties</li>
+                            <li>Top list common search recipes</li>
+                            <li>Calculate the amount by no. of serving</li>
+                            <li>Dish suggestion according to categories user commonly search/custom config</li>
+                            <li>User can subsrcibe newsletter of content update</li>
+                        </ol>
+                    </ul>
+                </div>
+                <a class="accordion-section-title" href="#pper3">Project Idea #3</a>
+                <div id="pper3" class="accordion-section-content">
+                    <ul class="unstyled">
+                        <li>why this is needed</li>
+                        <li>the functionality of the system</li>
+                        <li>the motivation behind this system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="hw0" class="row-fluid hide">
+        </div>
         <footer>
-          By Vicki 
+            By Author
         </footer>
-
-        
-      </div>
     </div>
-  </body>
+</body>
+
 </html>
