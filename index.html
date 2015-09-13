@@ -7,8 +7,9 @@
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/accordion.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -18,12 +19,18 @@
     <![endif]-->
     <script type="text/javascript">
     $(function() {
-        $(".showsketch").click(function() {
+        var nh = $("nav").height();
+        $(".jumbotron").css("top",nh+"px");
+        $("#place").css("top",nh+"px");
+        $(".accordion .accordion-section-title").click(function(){
+            $('html, body').animate({
+                scrollTop:  $("#hw0").offset().top-nh
+            });
+        })
+        $(".navbar-link").click(function() {
             var href = $(this).attr('href'),
-                oset = $(href).offset().top;
-            $(href).animate({
-                opacity: 1,
-                height: "300px",
+                oset = $(href).offset().top - nh;
+            $('html, body').animate({
                 scrollTop: oset
             }, 1000, function() {
                 $(href).addClass("open");
@@ -46,87 +53,102 @@
 
     });
     </script>
-    <title>HCI Assignment Page</title>
+    <title>COMP5517 Human Computer Interaction Assignment Page</title>
 </head>
 
 <body>
-    <div id="container" class="container-fluid">
+    <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+          <div class="navbar-collapse" id="bs-example-navbar-collapse-6">
+          <span class="navbar-brand">Assignment</span>
+          <ul class="nav navbar-nav">
+            <li><a href="#hw0" class="navbar-link active">0</a></li>
+            <li><a href="#hw1" class="navbar-link">1</a></li>
+            <li><a href="#hw2" class="navbar-link">2</a></li>
+            <li><a href="#hw3" class="navbar-link">3</a></li>
+            <li><a href="#hw4" class="navbar-link">4</a></li>
+            <li><a href="#hw5" class="navbar-link">5</a></li>
+           </ul>
+        </div>
+        </div>
+        </nav>
         <header class="jumbotron">
             <div class="container">
-                <h1>HCI Assignment Page</h1>
-                <p>By [Author] email:author@test.com</p>
+                <h1>COMP5517 Human Computer Interaction Assignment Page</h1>
+                <p>By Lam Ka Kei Vick <a href="mailto:14013473g@connect.polyu.hk">14013473g@connect.polyu.hk</a></p>
             </div>
         </header>
-        <div id="inner" class="row-fluid">
-            <a href="#hw0" class="grid completed">
-                <div class="desc">
-                    <h2>Homework#0</h2>
-                    <p>Project Ideas</p>
-                </div>
-            </a>
-            <a href="#" class="grid notyet">2</a>
-            <a href="#" class="grid notyet">3</a>
-            <a href="#" class="grid notyet">4</a>
-            <a href="#" class="grid notyet">5</a>
-            <a href="#" class="grid notyet">6</a>
-        </div>
+        <img id="place" src="images/place.jpg">
+        <div class="accordion" id="hw0">
         <!-- Task 2: Project ideas.
             Pick three different project ideas that you would be interested in working on for the prototyping assignment. Make a rough sketch of a user interface and write a couple of paragraphs for each. Your paragraph should tell us:
                 - What the system will be used for (why this is needed, the functionality of the system, the motivation behind this system.)
                 - Any additional information needed to describe the interface (beyond the interface sketch.)
         -->
-        <div class="accordion" id="hw0">
+            <div>
+                <h2>Homework#0</h2>
+                <p>Project Ideas for the prototyping assignment as follow:</p>
+            </div>
             <div class="accordion-section">
-                <a class="accordion-section-title" href="#pper1">Project Idea #1 - Volunteering pet babysetter recruit</a>
+                <a class="accordion-section-title" href="#pper1">Project Idea #1 - Website teach elderly how to use mobile phones</a>
                 <div id="pper1" class="accordion-section-content">
-                    <strong>Purpose: </strong>
-                    <p>A platform for volunteers to apply for babysitting busy pet owners and vice versa. Pet owners submit request with a brief introduction of their pets and babysitting periods. They can choose between volunteers applications. Applicants will be rated after completing each job. The rate can be other pet owners reference on choosing the right candidates to babysit their pets.</p>
+                    <div>
+                        <strong>Purposes: </strong>
+                    <p>Teach elderly how to use common function of smartphones such as phone calls, take pictures, find location, instant messaging etc.</p>
                     <strong>Functionality: </strong>
                     <ol>
-                        <li>List job by districts/animal types</li>
-                        <li>Protect user contact from public view. Applicants and pet owner must communicate through the platform until owner decision. Contact of successful applicants will be sent to owners by email</li>
-                        <li>Some questions refers to reference that need to study after lecture</li>
-                        <li>Discussion board for students discussion</li>
+                        <li>Interactive exercises simulates device operation</li>
+                        <li>Introduce from commonly used functions to device maanagement with situational example.</li>
+                        <li>When user completes exercise, the system will notify them with encouraging words to motivate them continuing the tutorial</li>
+                        <li>Tutorials are available according to user progress. They can 'unlock' new content after going through current content. This can prevent confusion when too many options available</li>
                     </ol>
                     <strong>Motivation behind this system</strong>
-                    <p>Motivate self-learning after normal lecture</p>
-                    <li><a class="showsketch" href="#sketch1">Interface sketch</a></li>
-                    </ul>
-                    <div class="sketch" id="sketch1">
-                        [This is a sketch]
+                    <p>Many elderly people does not understand how to use smartphone. They do not learn using smartphone as fast as adult and need to repeat the instruction many time. They will forget the instruction after attending workshops. There are books teaching elderly people using smartphone, some of them do not know how to read. Elderly people can be benefit on using smartphone to communicate with their families and help them in daily life, especially in emergent situation such as find location, seeking help from others. Besides, keep learning new skills slows down mental degradation of elderly. An interactive tutorial can facilitate them on learning the smartphone operation. It provides situational examples for commonly used functions. As they are closely related to daily life, it is easier for elderly people to pick up the new skills as well.</p>
+                    <p>Reference: <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;&nbsp;<a href="http://www.e123.hk/ElderlyPro/details/248301/90" target="_blank">《長青智能手機秘笈》</a></p>
+                    <p><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;&nbsp;<a href="https://www.lucidchart.com/documents/view/929a1d4e-e16d-4495-b236-5029b488c90c/0" target="_blank">Interface sketch</a></p>
                     </div>
                 </div>
-                <a class="accordion-section-title" href="#pper2">Project Idea #2 - Recipe database</a>
+                <a class="accordion-section-title" href="#pper2">Project Idea #2 - Mutual help virtual parents community online platform</a>
                 <div id="pper2" class="accordion-section-content">
-                    <strong>Purpose: </strong>
-                    <p>Gather recipes around the world. Apart from step by step instruction, user may upload videos/photos and share their own variation for futher reference. Introduce common cooking methods or ingridents for newbie to learn basic cooking techniques.</p>
+                    <div><strong>Purpose: </strong>
+                    <p>Online platform for parents community to babysit children for each other. Community member can be either babysitter or activity organizers. For example, working parents can request for babysitter through the platform. They can choose between applicants. After completing the job both applicant and recruiter will rate each other. This will be counted as the memeber reputation to the community. In exchange of members' help, the working parents can organize weekend activities or become babysitter when they are free.</p>
+                    <strong>Regulation</strong>
+                    <p>Every member of the community should contribute constantly in order to stay at the community. They cannot offer monetary benefit to each other on the platform.</p>
+                    <strong>Functionality: </strong>
+                    <ol>
+                        <li>Categorize job by district/period/children age.</li>
+                        <li>Member can set their preference on pioritizing activities/jobs</li>
+                        <li>Protect member contact from public view. Applicants and recruiters must communicate through the platform in private messages. They will get contact of each other by email after making an agreement with each other. </li>
+                        <li>Estimate member contribution by activities held/jobs completed. The platform will suspend member's accounts if they receive bad rate on most of completed job or not contributing to the community continously. </li>
+                    </ol>
+                    <strong>Motivation behind this system</strong>
+                    <p>Not all of the working parents can afford dosmetic helper to take care of their children, but they cannot stay with their children when they go to work. On the other hand, non working parents need not stay with their children all the time. If working parents take care of their children at weekend instead, they can still enjoy personal lives. It is believed that the online platform allows parents to form such mutual help community. </p>
+                    <p><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;&nbsp;<a href="https://www.lucidchart.com/documents/view/929a1d4e-e16d-4495-b236-5029b488c90c/1" target="_blank">Interface sketch</a></div>
+                </div>
+                <a class="accordion-section-title" href="#pper3">Project Idea #3 - DIY Recipe database</a>
+                <div id="pper3" class="accordion-section-content">
+                    <div>
                         <strong>Purpose: </strong>
-                        <p>Gather good cooking ideas. Allow user to share their own variation of common dish. Modify existing recipts according to personal preference</p>
+                        <p>Gather original/modified recipes of common dish around the world. Apart from step by step instruction, user may upload videos/photos and share their own variation for futher reference. Provide tutorial on using cooking gadgets, e.g. halogen oven(光波爐), soybean maker, also new use of common ingridents. Invite supermarket, seller of cooking gadget etc as sponsor. They provide recipt as demonstration of their products. While the database can promotes their products, users can learn how to use their products from their recipts. </p>
                         <strong>Functionality: </strong>
                         <ol>
                             <li>Search recipes by cooking methods/ingridents/difficulties</li>
                             <li>Top list common search recipes</li>
                             <li>Calculate the amount by no. of serving</li>
-                            <li>Dish suggestion according to categories user commonly search/custom config</li>
-                            <li>User can subsrcibe newsletter of content update</li>
+                            <li>Link to sponsor's shopping sites to shop ingreidents online</li>
+                            <li>User can post their variation for others' reference</li>
                         </ol>
-                    </ul>
-                </div>
-                <a class="accordion-section-title" href="#pper3">Project Idea #3</a>
-                <div id="pper3" class="accordion-section-content">
-                    <ul class="unstyled">
-                        <li>why this is needed</li>
-                        <li>the functionality of the system</li>
-                        <li>the motivation behind this system</li>
-                    </ul>
+                        <strong>Motivation behind this system</strong>
+                        <p>Those who are good at cooking may have good new cooking ideas. They know how to modify existing recipt to taste better. Other people may want to learn from them through the system. The system can offer benefit for contributors, e.g. purchas discounts, to encourage them providing recipt.</p>
+                        <p>Reference: <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;&nbsp;<a href="http://www.recipe.com/">Recipe.com</a></p>
+                    <p><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;&nbsp;<a href="https://www.lucidchart.com/documents/view/12dc9e2d-0e48-4be1-acdb-59635b5e2d2f" target="_blank">Interface sketch</a></p>
+                    </div>
+                    
                 </div>
             </div>
         </div>
-        <div id="hw0" class="row-fluid hide">
         </div>
-        <footer>
-            By Author
-        </footer>
     </div>
 </body>
 

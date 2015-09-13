@@ -1,13 +1,17 @@
-#container,
-#inner{
-	margin-top: 3%;
-}
+
 .jumbotron{
-	background: url(../images/hkstreet.jpeg) no-repeat;
-	background-size: cover;
-	padding-top: 10%;
+	position: relative;
+	margin-top: 20px;
+	background-color: transparent;
 }
 
+#place {
+	opacity: 0.6;
+	position: absolute;
+	top: 50px;
+	right: 0;
+	z-index: -1;
+}
 .grid{
 	display: block;
 	width: 250px;
